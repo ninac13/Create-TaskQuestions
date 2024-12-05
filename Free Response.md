@@ -27,6 +27,72 @@ Programs accept input to achieve their intended functionality. **Describe at lea
 - If there are multiple parts to this question, write the part letter with your response.
 
 ---
+```Javascript
+
+//Butter's input code:
+function retrieveFeelingQuote(category) {
+  DOMSelectors.mainOutput.innerHTML = ""; //Gets rid of previous current quote
+  $.ajax({
+    method: "GET",
+    url: "https://api.api-ninjas.com/v1/quotes?category=" + category,
+    headers: { "X-Api-Key": "e83S07p6GaMOgL3Tbp4W7g==SzjBmXqoFLEGxuow" },
+    contentType: "application/json",
+    success: function (result) {
+      console.log("Retrieved Quote:", result); //Check: Quote Retrieval
+      const quoteObject = {
+        author: result[0].author,
+        quote: result[0].quote,
+        category: category,
+      };
+      quoteHistory.push(quoteObject); //Quote added to long term storage (History)
+      console.log("History of Quotes:", quoteHistory); //Check to see if in long term
+      quoteCurrent.length = 0; //Empty quoteCurrent
+      quoteCurrent.push(quoteObject); //Quote added to short term storage (Current Quote)
+      // Display the quote on the page
+      console.log("Current Quote:", quoteCurrent); //Check to see if current quote works
+      for (let i = 0; i < quoteCurrent.length; i++) {
+        const quote = quoteCurrent[i];
+        createQuoteCard(quote);
+      }
+    },
+    error: function ajaxError(jqXHR) {
+      console.error("Error: ", jqXHR.responseText);
+    },
+  });
+}
+/* This program function pulls from an api that includes a variety of quotes and after 
+retrieving the author, quote, and the category of the quote, it adds the quote to list 
+of quotes to check to see if that quote has already been picked. The current quote list
+is then emptied to ensure the previous quote is not there, and then the quote is displayed
+on the page. */
+
+//Angelina's input code:
+function insertText(inputContent, type) {
+  DOMSelect.results.insertAdjacentHTML("beforeend", `<br></br>`);
+  const content = inputContent;
+  if (type === "file") {
+    content.forEach(function (item) {
+      DOMSelect.results.insertAdjacentHTML(
+        "beforeend",
+        `<p class="text">${item}</p>`
+      );
+    });
+  } else {
+    content.forEach(function (item) {
+      DOMSelect.results.insertAdjacentHTML(
+        "beforeend",
+        `<p class="text">${item.textContent}</p>`
+      );
+    });
+    DOMSelect.input.innerHTML = "";
+  }
+  DOMSelect.inputbox.style.display = "none";
+  DOMSelect.settings.style.display = "";
+}
+/* This program function checks to see if an input is a file, and then it inserts it
+to a class of text. If the  */
+
+```
 
 ### Question 2
 Refer to your Personalized Project Reference when answering this question.
