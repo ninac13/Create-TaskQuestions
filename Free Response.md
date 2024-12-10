@@ -90,7 +90,8 @@ function insertText(inputContent, type) {
   DOMSelect.settings.style.display = "";
 }
 /* This program function checks to see if an input is a file, and then it inserts it
-to a class of text. If the  */
+to a class of text. If the input is not a file, then it inserts the items text content,
+ensuring both types can be inputted into the function. */
 
 ```
 
@@ -99,6 +100,8 @@ Refer to your Personalized Project Reference when answering this question.
 
 #### Part (a):
 Consider the first iteration statement included in the Procedure section of your Personalized Project Reference. **Describe what is being accomplished by the code in the body of the iteration statement.**
+
+
 
 #### Part (b):
 Consider the procedure identified in part (i) of the Procedure section of your Personalized Project Reference.
